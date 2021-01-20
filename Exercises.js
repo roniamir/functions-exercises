@@ -29,16 +29,21 @@ console.log(arr);
 //Question 3
 function allCaps(str) {
   // your code here
-  let newStr = str[0].toUpperCase(); 
-  let lastLocation = 1;
-  while(str.indexOf(" ") != -1){
-    newStr += str.slice(lastLocation, str.indexOf(" "));
-    lastLocation = str.indexOf(" ")+1;
+  let newStr ="";
+  let lastLocation = 0;
+  while(str.indexOf(" ", lastLocation) != -1){
     newStr += str[lastLocation].toUpperCase(); 
+    lastLocation++;
+    newStr += str.slice(lastLocation, str.indexOf(" ", lastLocation) + 1);
+    lastLocation = str.indexOf(" ", lastLocation) + 1;
   }
+   newStr += str[lastLocation].toUpperCase(); 
+    lastLocation++;
+    newStr += str.slice(lastLocation, str.length);
   return newStr;
 }
-let st = "love of my life";
+
+let st = "I Am A Cyber4s Student";
 console.log(allCaps(st));
 //Question 4
 function myPower(x, n) {
