@@ -1,19 +1,21 @@
-//capitalize just the first letter in every word
-
-function allCaps(str) {
+function getFirstNotRepeating(str) {
   // your code here
-  let newStr ="";
-  let lastLocation = 0;
-  while(str.indexOf(" ", lastLocation) != -1){
-    newStr += str[lastLocation].toUpperCase(); 
-    lastLocation++;
-    newStr += str.slice(lastLocation, str.indexOf(" ", lastLocation) + 1);
-    lastLocation = str.indexOf(" ", lastLocation) + 1;
+  let  firstNotRepeated = "";
+  let isDup =false;
+  for ( let i = 0; i < str.length ; i++){
+    isDup =false;
+    for ( let j = 0 ; j < str.length && !isDup ; j++ ){
+      if(str[i] === str[j] && i != j){
+        console.log(str[i], str[j]);
+        isDup = true;
+      }
+    }
+    if(!isDup){
+      firstNotRepeated = str[i];
+      break;
+    }
   }
-   newStr += str[lastLocation].toUpperCase(); 
-    lastLocation++;
-    newStr += str.slice(lastLocation, str.length);
-  return newStr;
+  return firstNotRepeated;
 }
-let st = "I Am A Cyber4s Student";
-console.log(allCaps(st));
+
+console.log(getFirstNotRepeating("abcccfbaefa"));
